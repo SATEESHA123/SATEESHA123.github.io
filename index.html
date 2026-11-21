@@ -1,8 +1,257 @@
 <!DOCTYPE html>
-<html>
-<head><title>Bird Hunter</title></head>
-<body style="font-family: sans-serif; text-align: center; padding: 50px;">
-  <h1>Bird Hunter</h1>
-  <p>Official support & landing page for Bird Hunter on Google Play.</p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Hunter — The Ultimate 2D Archery Expedition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070B19;
+      --card-bg: rgba(17, 24, 48, 0.75);
+      --primary: #F59E0B;
+      --accent: #00E5FF;
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #152042 0%, var(--bg) 70%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header / Nav */
+    header {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span { color: var(--primary); }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 90px 20px 60px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #FFFFFF 20%, #CBD5E1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 36px;
+    }
+
+    /* Google Play CTA */
+    .btn-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: #0F172A;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 229, 255, 0.2);
+    }
+    .btn-play:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 35px -5px rgba(0, 229, 255, 0.4);
+    }
+    .btn-play svg { width: 32px; height: 32px; }
+    .btn-text-sub { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #94A3B8; text-align: left; }
+    .btn-text-main { font-size: 1.25rem; font-weight: 700; color: #fff; text-align: left; }
+
+    /* Features Grid */
+    .features {
+      padding: 70px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+    }
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Privacy & Support Section */
+    .info-section {
+      background: rgba(11, 19, 43, 0.6);
+      border-top: 1px solid var(--border);
+      padding: 60px 0;
+      margin-top: 50px;
+    }
+    .info-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+    .info-section p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        🏹 <span>BIRD HUNTER</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#support">Support</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="badge">🔥 Available Now on Google Play</div>
+      <h1>Master The Art of 2D Precision Archery</h1>
+      <p>Draw your bow, calculate wind and gravity, and strike flying targets across 300+ campaign levels and epic boss battles.</p>
+      
+      <a href="https://play.google.com/store/apps/details?id=com.birdhunter.app" target="_blank" class="btn-play">
+        <svg viewBox="0 0 512 512">
+          <path fill="#00E5FF" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+          <path fill="#00E676" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/>
+          <path fill="#FFD600" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+          <path fill="#FF1744" d="M407.7 206.5L347.6 241l-22.3 15 22.3 15 60.1 34.5c22.6 13 46.7 1.8 46.7-24.5V231c0-26.3-24.1-37.5-46.7-24.5z"/>
+        </svg>
+        <div>
+          <div class="btn-text-sub">Get it on</div>
+          <div class="btn-text-main">Google Play</div>
+        </div>
+      </a>
+    </section>
+
+    <section id="features" class="features">
+      <div class="feature-card">
+        <div class="card-icon">🏹</div>
+        <h3>8 Legendary Bows</h3>
+        <p>Unlock and upgrade recurve, compound, and mythical bows with custom draw tensions and velocity perks.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">⚡</div>
+        <h3>7 Elemental Arrow Types</h3>
+        <p>Harness Fire, Ice Stasis, Chain Lightning, Explosive Bombs, Chrono Slow, and Eagle Vision trajectory guidance.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">🦅</div>
+        <h3>Epic Titan Bosses</h3>
+        <p>Test your marksmanship against soaring Titans, including the Inferno Phoenix, Frost Drake, and Thunder Roc.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">🎯</div>
+        <h3>300+ Unique Levels</h3>
+        <p>Battle through daytime forests, sunset vistas, blizzard peaks, and volcanic calderas with dynamic wind physics.</p>
+      </div>
+    </section>
+
+    <section id="privacy" class="info-section">
+      <h2>Privacy Policy</h2>
+      <p>Bird Hunter ("we", "our") respects your privacy. This game is designed for players aged 13 and above and does not collect personally identifiable information without consent.</p>
+      <p><strong>Advertising & Analytics:</strong> We use Google AdMob and Unity Ads to display non-intrusive advertisements. These networks may collect anonymous device identifiers to serve contextual ads in accordance with Google Play policies.</p>
+      <p><strong>In-App Purchases:</strong> All transactions are processed securely through Google Play Billing.</p>
+      <p>For questions or data deletion inquiries, please reach out to our support below.</p>
+    </section>
+
+    <section id="support" class="info-section">
+      <h2>Developer & Player Support</h2>
+      <p>Need help with your progress, report a bug, or suggest a feature?</p>
+      <p><strong>Official Contact:</strong> <a href="mailto:support@birdhunter.app" style="color: var(--accent);">support@birdhunter.app</a></p>
+      <p><strong>Platform:</strong> Android (Google Play Store)</p>
+    </section>
+
+    <footer>
+      <p>© 2026 Bird Hunter. All Rights Reserved. Built with Flutter & Flame.</p>
+    </footer>
+  </div>
+
 </body>
 </html>
